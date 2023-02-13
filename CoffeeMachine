@@ -1,5 +1,4 @@
 using System;
-
 namespace Household
 {
     public class CoffeeMachine
@@ -27,7 +26,6 @@ namespace Household
 
             _water += amount;
         }
-
         public void AddCoffee(int amount)
         {
             if (amount <= 0)
