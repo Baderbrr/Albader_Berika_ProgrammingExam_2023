@@ -1,0 +1,60 @@
+using System;
+
+namespace Household
+{
+    public class CoffeeMachine
+    {
+        private string _brand;
+        private int _water;
+        private int _coffee;
+
+        public CoffeeMachine(string brand)
+        {
+            if (string.IsNullOrEmpty(brand))
+            {
+                throw new ArgumentException("Brand cannot be empty or null.");
+            }
+
+            _brand = brand;
+        }
+
+        public void AddWater(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount of water must be a positive value.");
+            }
+
+            _water += amount;
+        }
+
+        public void AddCoffee(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount of coffee must be a positive value.");
+            }
+
+            _coffee += amount;
+        }
+
+        public void MakeEspresso()
+        {
+            int waterNeeded = 30;
+            int coffeeNeeded = 20;
+
+            if (_water < waterNeeded)
+            {
+                throw new InvalidOperationException("Not enough water to make espresso.");
+            }
+
+            if (_coffee < coffeeNeeded)
+            {
+                throw new InvalidOperationException("Not enough coffee to make espresso.");
+            }
+
+            _water -= waterNeeded;
+            _coffee -= coffeeNeeded;
+        }
+    }
+}
