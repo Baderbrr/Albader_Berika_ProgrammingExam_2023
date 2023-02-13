@@ -1,0 +1,26 @@
+class CoffeeMachine:
+    def __init__(self, brand):
+        if not brand or brand.strip() == "":
+            raise ValueError("Brand name cannot be empty or null.")
+        self.brand = brand
+        self.water = 0
+        self.coffee = 0
+
+    def AddWater(self, water):
+        if water <= 0:
+            raise ValueError("Water amount must be a positive value.")
+        self.water += water
+
+    def AddCoffee(self, coffee):
+        if coffee <= 0:
+            raise ValueError("Coffee amount must be a positive value.")
+        self.coffee += coffee
+
+    def MakeEspresso(self):
+        if self.water < 30:
+            raise ValueError("Not enough water in the coffee machine to make an espresso.")
+        if self.coffee < 10:
+            raise ValueError("Not enough coffee in the coffee machine to make an espresso.")
+        self.water -= 30
+        self.coffee -= 10
+        return "Espresso made successfully!"
