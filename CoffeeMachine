@@ -3,14 +3,14 @@ namespace Household
 {
     public class CoffeeMachine
     {
-        private string _brand;
+        private string;
         private int _water;
         private int _coffee;
-        public CoffeeMachine(string brand)
+        public CoffeeMachine(string )
         {
-            if (string.IsNullOrEmpty(brand))
+            if (string.IsNullOrEmpty)
             {
-                throw new ArgumentException("Brand cannot be empty or null.");
+                throw new ArgumentException;
             }
             _brand = brand;
         }
@@ -18,7 +18,7 @@ namespace Household
         {
             if (amount <= 0)
             {
-                throw new ArgumentException("Amount of water must be a positive value.");
+                throw new ArgumentException;
             }
             _water += amount;
         }
@@ -26,7 +26,7 @@ namespace Household
         {
             if (amount <= 0)
             {
-                throw new ArgumentException("Amount of coffee must be a positive value.");
+                throw new ArgumentException;
             }
             _coffee += amount;
         }
@@ -36,11 +36,11 @@ namespace Household
             int coffeeNeeded = 20;
             if (_water < waterNeeded)
             {
-                throw new InvalidOperationException("Not enough water to make espresso.");
+                throw new InvalidOperationException;
             }
             if (_coffee < coffeeNeeded)
             {
-                throw new InvalidOperationException("Not enough coffee to make espresso.");
+                throw new InvalidOperationException;
             }
             _water -= waterNeeded;
             _coffee -= coffeeNeeded;
