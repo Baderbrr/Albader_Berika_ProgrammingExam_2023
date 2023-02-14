@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
+namespace DatabaseAccessTutorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (var context = new CustomerContext())
+            {
+                var customers = context.Customers
+                    .Select(c => new { c.FirstName, c.LastName, c.CompanyName })
+                    .ToList();
+
+                foreach (var customer in customers)
+                {
+                    Console.WriteLine($"First Name: {customer.FirstName}, Last Name: {customer.LastName}, Company Name: {customer.CompanyName}");
+                }
+            }
+        }
+    }
+
+    public class CustomerContext : DbContext
+    {
+        public DbSet<Customer> Customers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       
+    }
+
+    public class Customer
+    {
+        public int CustomerId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CompanyName { get; set; }
+    }
+}
