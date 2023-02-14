@@ -1,0 +1,38 @@
+using System;
+using Microsoft.EntityFrameworkCore;
+
+namespace DatabaseAccessTutorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (var context = new CustomerContext())
+            {
+                var customer = new Customer
+                {
+                    FirstName = "Your First Name",
+                    LastName = "Your Last Name",
+                    CompanyName = "Your Company Name"
+                };
+
+                context.Customers.Add(customer);
+                context.SaveChanges();
+
+                Console.WriteLine("Customer added successfully");
+            }
+        }
+    }
+
+    public class CustomerContext : DbContext
+    {
+        public DbSet<Customer> Customers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer;
+        }
+    }
+
+    public class Customer
+    {
